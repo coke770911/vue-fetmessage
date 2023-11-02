@@ -1,19 +1,17 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import HeaderView from './components/HeaderView.vue';
+import { storeToRefs } from 'pinia';
+import { useUserStore } from '@/stores/user';
 
+const store = useUserStore()
 
 
 </script>
 
 <template>
   <header>
-    <div class="container">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/login">login</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+    <HeaderView />
   </header>
   <RouterView /> 
   <footer class="navbar fixed-bottom bg-body-tertiary" style="">
@@ -22,7 +20,9 @@ import { RouterLink, RouterView } from 'vue-router'
     </div>
   </footer>
 </template>
+<script>
 
+</script>
 <style scoped>
 body {
   margin-bottom: 80px;
