@@ -1,19 +1,28 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HeaderView from './components/HeaderView.vue';
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '@/stores/user';
 
 const store = useUserStore()
 
+const { login } = storeToRefs(store)
 
 </script>
-
 <template>
-  <header>
-    <HeaderView />
+  <header v-if="login">
+    <div class="container">
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/login">login</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+    </div>
   </header>
-  <RouterView /> 
+  <main>
+    <div class="container">
+      <RouterView /> 
+    </div>
+  </main>
   <footer class="navbar fixed-bottom bg-body-tertiary" style="">
     <div class="container">
       <p>© 2022 圖書資訊處建置 本系統建議使用Chrome Edge等瀏覽器。</p>
@@ -21,7 +30,6 @@ const store = useUserStore()
   </footer>
 </template>
 <script>
-
 </script>
 <style scoped>
 body {

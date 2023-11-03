@@ -9,15 +9,27 @@ export const useUserStore = defineStore('user', {
       dept: '',
       isAdmin: false,
       isLogin: false,
-      items: [],
       hasChanged: true,
     }
   },
-  // could also be defined as
-  // state: () => ({ count: 0 })
+  getters: {
+    getUser() {
+      return {
+        account: this.account,
+        name: this.name,
+        dept: this.dept,
+        isAdmin: this.isAdmin,
+        isLogin: this.isLogin,
+      }
+    }
+  },
   actions: {
-    increment() {
-      this.count++
-    },
+    setUser(user) {
+      this.account = user.account
+      this.name = user.name
+      this.dept = user.dept
+      this.isAdmin = user.isAdmin
+      this.isLogin = true
+    }
   },
 })
