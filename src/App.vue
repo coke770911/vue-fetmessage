@@ -1,16 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import { storeToRefs } from 'pinia';
-import { useUserStore } from '@/stores/user';
-
-const store = useUserStore()
-
-const { login } = storeToRefs(store)
-
+import { useUserStore } from '@/stores/user'
+const store = useUserStore();
 </script>
 <template>
-  <header v-if="login">
+  <header>
     <div class="container">
+      <p>Count: {{ store.data.account }}</p>
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/login">login</RouterLink>
@@ -30,7 +26,10 @@ const { login } = storeToRefs(store)
   </footer>
 </template>
 <script>
+
+
 </script>
+
 <style scoped>
 body {
   margin-bottom: 80px;
